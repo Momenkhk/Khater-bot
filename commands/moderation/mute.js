@@ -1,0 +1,13 @@
+const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+
+module.exports = {
+  name: 'mute',
+  permissions: [PermissionFlagsBits.ModerateMembers],
+  cooldown: 3000,
+  slashData: new SlashCommandBuilder().setName('mute').setDescription('Moderation action: mute'),
+  async execute({ interaction, message, source }) {
+    const text = 'Executed moderation command: mute';
+    if (source === 'slash') return interaction.reply({ content: text, ephemeral: false });
+    return message.reply(text);
+  }
+};
