@@ -1,8 +1,8 @@
 {
   "token": "REPLACE_WITH_BOT_TOKEN",
   "clientId": "REPLACE_WITH_CLIENT_ID",
-  "owners": ["REPLACE_WITH_OWNER_ID"],
-  "prefix": "!",
+  "owners": ["1301891116781801502", "875498167330820097"],
+"prefix": "$",
   "sharding": "auto",
   "cache": {
     "max": 5000,
