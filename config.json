@@ -2,7 +2,8 @@
   "token": "REPLACE_WITH_BOT_TOKEN",
   "clientId": "REPLACE_WITH_CLIENT_ID",
   "owners": [
-    "REPLACE_WITH_OWNER_ID"
+    "875498167330820097","1301891116781801502"
+    
   ],
   "prefix": "$",
   "sharding": "auto",
@@ -15,5 +16,5 @@
     "windowMs": 5000,
     "maxMentions": 5
   },
-  "dashboardPort": 3001
+  "dashboardPort": 3000
 }
