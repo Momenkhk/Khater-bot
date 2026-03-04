@@ -1,0 +1,23 @@
+{
+  "name": "khater-bot",
+  "version": "1.0.0",
+  "description": "Enterprise-grade Discord automation bot",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "NODE_ENV=development node index.js",
+    "shard": "node systems/sharding.js",
+    "check": "node --check index.js && node --check handlers/commandHandler.js && node --check handlers/eventHandler.js"
+  },
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "discord.js": "^14.21.0",
+    "dotenv": "^16.4.5",
+    "lru-cache": "^10.4.3",
+    "mongoose": "^8.6.1"
+  }
+}
