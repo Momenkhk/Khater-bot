@@ -1,22 +1,57 @@
-# بوت Khater (Discord.js v14)
+# بوت Khater Security (Discord.js v14 + Express)
 
-بوت ديسكورد متطور بهيكل Modular وتخزين JSON كامل، مع لوحة اختصارات وبنلات إدارة متقدمة.
+بوت حماية متكامل ومنظم مع Dashboard حديث + أوامر مقسمة + تخزين JSON.
 
-## الميزات
-- أوامر Slash + Prefix مع تحميل ديناميكي.
-- اختصارات أوامر بدون بريفكس (مثل: `باند` بدل `!ban`) عبر `/commands-shortcut`.
-- تكت بيلدر متطور: فتح/استلام/إغلاق من نفس البنل.
-- بنل حماية `/security-panel` لإدارة حماية المنشن وسبام الأوامر.
-- بنل ردود تلقائية `/autoresponse-panel` لإضافة/عرض/حذف الردود.
-- نظام أمان قوي: Rate limit + حماية من الإساءة + صلاحيات دقيقة.
-- كل التخزين JSON بدون MongoDB.
+## التقنيات
+- Node.js
+- discord.js v14
+- Express.js Dashboard
+- JSON Files Storage
+
+## التخزين (JSON)
+داخل `/database`:
+- settings.json
+- whitelist.json
+- logs.json
+- panels.json
+- tickets.json
+- security.json
+
+## مميزات الإدارة
+- التحكم في حالة كل أمر من الداشبورد (تشغيل/إيقاف).
+- التحكم في أنظمة الحماية: Anti Nuke / Beast Mode / Anti Raid / Anti Spam / Verification.
+- تحكم كامل في Whitelist و Logs من الداشبورد.
+- Command shortcuts بدون بريفكس.
+
+## المساعدة
+- `$help` عرض كل الأوامر حسب القسم.
+- `$help <command>` يرسل Embed فيه:
+  - وصف الأمر
+  - الاختصارات
+  - طريقة الاستخدام
+  - أمثلة جاهزة
+
+## Dashboard
+- صفحة رئيسية منظمة بأقسام مثل Security Bot:
+  - General
+  - Anti Nuke
+  - Beast Mode
+  - Anti Raid
+  - Verification
+  - Moderation
+  - Whitelist
+  - Logs
+  - Anti Spam
 
 ## أوامر مهمة
-- **عام**: `help`, `ping`, `avatar`, `userinfo`, `serverinfo`, `profile`
-- **إدارة**: `commands-shortcut`, `ticket-builder`, `ticketpanel`, `security-panel`, `autoresponse-panel`, `warn`, `warnings`, `clearwarns`, `clear`, `slowmode`, `lock`, `unlock`, `kick`, `ban`, `unban`, `setprefix`
-- **أونر**: `reload`, `stats`, `owners`
+- `/commands-shortcut`
+- `/ticket-builder`
+- `/security-panel`
+- `/autoresponse-panel`
+- `/whitelist add|remove|list`
+- `/loggers`
 
-## تشغيل
-1. عدّل `config.json` أو ضع `BOT_TOKEN`.
+## التشغيل
+1. عدل `config.json` (token, owners, dashboardPort, prefix).
 2. `npm install`
-3. `npm run start` أو `npm run shard`
+3. `npm run start`

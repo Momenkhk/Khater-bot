@@ -13,6 +13,7 @@ function scan(dir) {
 module.exports = async function loadCommands(client, baseDir) {
   client.prefixCommands.clear();
   client.slashCommands.clear();
+  client.commandAliases.clear();
 
   const files = scan(baseDir);
   const slashPayload = [];
@@ -24,6 +25,10 @@ module.exports = async function loadCommands(client, baseDir) {
 
     const normalizedName = command.name.toLowerCase();
     if (command.prefix !== false) client.prefixCommands.set(normalizedName, command);
+    if (Array.isArray(command.aliases)) {
+      for (const alias of command.aliases) client.commandAliases.set(String(alias).toLowerCase(), normalizedName);
+    }
+
     if (command.slashData) {
       client.slashCommands.set(normalizedName, command);
       slashPayload.push(command.slashData.toJSON());

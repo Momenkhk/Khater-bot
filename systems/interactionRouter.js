@@ -2,20 +2,21 @@ const enforceCooldown = require('../utils/cooldownManager');
 const safeReply = require('../utils/safeReply');
 const { hasPermission } = require('../utils/permissionManager');
 const { t } = require('../utils/i18n');
+const fileStore = require('../src/database/fileStore');
 
 module.exports = function createInteractionRouter(client) {
   return async function interactionRouter(interaction) {
     if (!interaction.isChatInputCommand()) return;
 
-    const scope = client.systems.security.validateCommandUse(`slash:${interaction.guildId}:${interaction.user.id}:${interaction.commandName}`, interaction.guildId);
+    const scope = client.systems.security.validateCommandUse(`slash:${interaction.guildId}:${interaction.user.id}:${interaction.commandName}`, interaction.guildId, interaction.user.id);
     if (!scope.ok) return safeReply(interaction, { content: scope.reason, ephemeral: false });
 
     const command = client.slashCommands.get(interaction.commandName.toLowerCase());
     if (!command) return;
 
-    const selectedLang = interaction.options?.getString('lang');
-    if (selectedLang && ['ar', 'en'].includes(selectedLang)) {
-      client.db.upsert('users', { userId: interaction.user.id }, { lang: selectedLang });
+    const settings = fileStore.get('settings', interaction.guildId);
+    if (settings.commands?.[command.name]?.enabled === false) {
+      return safeReply(interaction, { content: 'هذا الأمر معطل من لوحة التحكم.', ephemeral: false });
     }
 
     const cooldown = enforceCooldown(client, `${interaction.user.id}:${command.name}`, command.cooldown || 2000);

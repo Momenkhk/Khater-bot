@@ -2,7 +2,6 @@ const path = require('path');
 const { Client, Collection, GatewayIntentBits, Partials } = require('discord.js');
 const dotenv = require('dotenv');
 const config = require('./config.json');
-const db = require('./database/jsonStore');
 const loadCommands = require('./handlers/commandHandler');
 const loadEvents = require('./handlers/eventHandler');
 const createHotReloader = require('./systems/hotReload');
@@ -10,6 +9,9 @@ const createInteractionRouter = require('./systems/interactionRouter');
 const createPrefixRouter = require('./systems/prefixRouter');
 const createAntiCrash = require('./systems/antiCrash');
 const createSecuritySystem = require('./systems/securitySystem');
+const startDashboard = require('./src/dashboard/server');
+const fileStore = require('./src/database/fileStore');
+const legacyStore = require('./database/jsonStore');
 
 dotenv.config();
 
@@ -30,15 +32,17 @@ const client = new Client({
 });
 
 client.config = config;
-client.db = db;
+client.db = legacyStore;
 client.cooldowns = new Collection();
 client.prefixCommands = new Collection();
 client.slashCommands = new Collection();
+client.commandAliases = new Collection();
 client.systems = {};
 
 async function bootstrap() {
   createAntiCrash(client);
-  db.init();
+  fileStore.ensure();
+  legacyStore.init();
 
   client.systems.security = createSecuritySystem(client);
   client.systems.interactionRouter = createInteractionRouter(client);
@@ -46,6 +50,8 @@ async function bootstrap() {
 
   await loadCommands(client, path.join(__dirname, 'commands'));
   await loadEvents(client, path.join(__dirname, 'events'));
+
+  startDashboard(client, config.dashboardPort || 3001);
 
   if (process.env.NODE_ENV !== 'production') {
     client.systems.hotReloader = createHotReloader(client, path.join(__dirname, 'commands'));
