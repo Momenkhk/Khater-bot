@@ -1,9 +1,9 @@
 {
-  "token": "REPLACE_WITH_BOT_TOKEN",
-  "clientId": "REPLACE_WITH_CLIENT_ID",
-  "owners": ["REPLACE_WITH_OWNER_ID"],
-  "prefix": "!",
-  "mongoUri": "mongodb://127.0.0.1:27017/khaterbot",
+  "token": "MTQ2OTQyMjI2ODcxODI1NjE0OA.G7HjzC.N_nRvB2YfXZHCndVS5frCGMqn2CyZZie0XzcTo",
+  "clientId": "1469422268718256148",
+  "owners": ["1301891116781801502", "875498167330820097"]
+  "prefix": "$",
+  "mongoUri": "mongodb+srv://user_875498167330820097:7%40%23*B9DKAgg%5EK%23eHbtewmc7VOqv%26B47Y@thailandcodes6.kfolae.mongodb.net/db_875498167330820097?retryWrites=true&w=majority",
   "sharding": "auto",
   "cache": {
     "max": 5000,
