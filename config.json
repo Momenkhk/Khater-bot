@@ -1,0 +1,17 @@
+{
+  "token": "REPLACE_WITH_BOT_TOKEN",
+  "clientId": "REPLACE_WITH_CLIENT_ID",
+  "owners": ["REPLACE_WITH_OWNER_ID"],
+  "prefix": "!",
+  "mongoUri": "mongodb://127.0.0.1:27017/khaterbot",
+  "sharding": "auto",
+  "cache": {
+    "max": 5000,
+    "ttl": 300000
+  },
+  "security": {
+    "globalRateLimit": 10,
+    "windowMs": 5000,
+    "maxMentions": 5
+  }
+}
