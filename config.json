@@ -1,8 +1,8 @@
 {
-  "token": "MTQ2OTQyMjI2ODcxODI1NjE0OA.GDt6Bv.db6u-CQQw4YfZo9KNgwQkU_Mp_fros6uu8TT",
-  "clientId": "1469422268718256148",
+  "token": "REPLACE_WITH_BOT_TOKEN",
+  "clientId": "REPLACE_WITH_CLIENT_ID",
   "owners": [
-    "875498167330820097","1301891116781801502"
+    "REPLACE_WITH_OWNER_ID"
   ],
   "prefix": "$",
   "sharding": "auto",
@@ -11,9 +11,9 @@
     "ttl": 300000
   },
   "security": {
-    "globalRateLimit": 6,
+    "globalRateLimit": 10,
     "windowMs": 5000,
-    "maxMentions": 3
+    "maxMentions": 5
   },
-  "dashboardPort": 3000
+  "dashboardPort": 3001
 }

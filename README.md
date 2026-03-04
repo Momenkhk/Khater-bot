@@ -18,7 +18,7 @@
 - security.json
 
 ## مميزات الإدارة
-- التحكم في حالة كل أمر من الداشبورد (تشغيل/إيقاف).
+- التحكم في حالة كل أمر من الداشبورد (تشغيل/إيقاف) + إعدادات متقدمة لكل أمر (aliases/roles/cleanup).
 - التحكم في أنظمة الحماية: Anti Nuke / Beast Mode / Anti Raid / Anti Spam / Verification.
 - تحكم كامل في Whitelist و Logs من الداشبورد.
 - Command shortcuts بدون بريفكس.
@@ -31,17 +31,17 @@
   - طريقة الاستخدام
   - أمثلة جاهزة
 
-## Dashboard
-- صفحة رئيسية منظمة بأقسام مثل Security Bot:
-  - General
-  - Anti Nuke
-  - Beast Mode
-  - Anti Raid
-  - Verification
-  - Moderation
-  - Whitelist
-  - Logs
-  - Anti Spam
+## Dashboard (منظم مثل البوتات الكبيرة)
+- تبويبات واضحة:
+  - نظرة عامة
+  - الإشراف
+  - مكافحة الغزو
+  - الحماية الخاصة
+  - القائمة البيضاء
+  - السجلات
+  - الرد التلقائي
+  - التذاكر
+- جميع الأزرار تعمل فعليًا وتحفظ الإعدادات عبر REST API.
 
 ## أوامر مهمة
 - `/commands-shortcut`

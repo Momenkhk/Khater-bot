@@ -32,14 +32,15 @@ module.exports = {
     .addStringOption((o) => o.setName('command').setDescription('اسم الأمر').setRequired(false)),
   async execute({ client, interaction, message, source, args = [] }) {
     const requested = (interaction?.options?.getString('command') || args[0] || '').toLowerCase();
+    const resolved = requested ? (client.commandAliases.get(requested) || requested) : ''; 
 
     if (requested) {
-      const cmd = client.prefixCommands.get(requested);
+      const cmd = client.prefixCommands.get(resolved);
       if (!cmd) {
         const txt = 'الأمر غير موجود.';
         return source === 'slash' ? interaction.reply({ content: txt }) : message.reply(txt);
       }
-      const embed = buildCommandEmbed(requested, cmd);
+      const embed = buildCommandEmbed(resolved, cmd);
       return source === 'slash' ? interaction.reply({ embeds: [embed] }) : message.reply({ embeds: [embed] });
     }
 
