@@ -2,8 +2,7 @@
   "token": "REPLACE_WITH_BOT_TOKEN",
   "clientId": "REPLACE_WITH_CLIENT_ID",
   "owners": [
-    "875498167330820097","1301891116781801502"
-    
+    "REPLACE_WITH_OWNER_ID",""
   ],
   "prefix": "$",
   "sharding": "auto",
